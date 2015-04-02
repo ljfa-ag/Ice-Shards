@@ -1,0 +1,16 @@
+[
+{
+  "modid": "ice_shards",
+  "name": "Ice Shards",
+  "description": "An addon for Glass Shards that adds ice shards",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["ljfa"],
+  "credits": "ljfa for the code, Tord for textures and ideas",
+  "logoFile": "",
+  "screenshots": [],
+  "requiredMods": ["glass_shards"]
+}
+]
