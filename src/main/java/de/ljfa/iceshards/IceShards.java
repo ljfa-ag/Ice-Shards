@@ -18,6 +18,16 @@ public class IceShards {
     @Mod.Instance(Reference.MODID)
     public static IceShards instance;
     
+    public static final ModGlassHandler iceHandler = new ModGlassHandler() {
+        @Override
+        public void addShardsDrop(HarvestDropsEvent event) {
+            float chance = HarvestDropsHandler.getChanceFromFortune(event.fortuneLevel);
+            if(event.world.rand.nextFloat() <= chance) {
+                event.drops.add(new ItemStack(ModItems.ice_shards));
+            }
+        }
+    };
+    
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         Config.loadConfig(event.getSuggestedConfigurationFile());
@@ -26,17 +36,8 @@ public class IceShards {
     
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-        ModGlassHandler handler = new ModGlassHandler() {
-            @Override
-            public void addShardsDrop(HarvestDropsEvent event) {
-                float chance = HarvestDropsHandler.getChanceFromFortune(event.fortuneLevel);
-                if(event.world.rand.nextFloat() <= chance) {
-                    event.drops.add(new ItemStack(ModItems.ice_shards));
-                }
-            }
-        };
-        GlassRegistry.addHandler(Blocks.ice, handler);
-        GlassRegistry.addHandler(Blocks.packed_ice, handler);
+        GlassRegistry.addHandler(Blocks.ice, iceHandler);
+        GlassRegistry.addHandler(Blocks.packed_ice, iceHandler);
     }
     
     @Mod.EventHandler
