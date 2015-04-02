@@ -1,13 +1,14 @@
 package de.ljfa.iceshards;
 
+import ljfa.glassshards.glass.ModGlassHandler;
+import ljfa.glassshards.handlers.HarvestDropsHandler;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import de.ljfa.iceshards.items.ModItems;
-import ljfa.glassshards.glass.ModGlassHandler;
-import ljfa.glassshards.handlers.HarvestDropsHandler;
 
 public class IceHandler extends ModGlassHandler {
+    
     public static final IceHandler instance = new IceHandler(true);
     public static final IceHandler clearingInstance = new IceHandler(false);
     
