@@ -10,12 +10,14 @@ import net.minecraftforge.client.MinecraftForgeClient;
 import org.apache.logging.log4j.Level;
 
 import cpw.mods.fml.common.FMLLog;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameData;
 import cpw.mods.fml.relauncher.Side;
+import de.ljfa.iceshards.compat.ChiselIceHelper;
 import de.ljfa.iceshards.items.ModItems;
 
 @Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION,
@@ -40,6 +42,7 @@ public class IceShards {
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         registerAllIce();
+        initCompatModules();
     }
     
     private void registerAllIce() {
@@ -54,5 +57,12 @@ public class IceShards {
             }
         }
         FMLLog.log(Reference.MODNAME, Level.INFO, "Added %d ice blocks to the GlassRegistry", counter);
+    }
+    
+    private void initCompatModules() {
+        if(ljfa.glassshards.Config.chiselEnable && Loader.isModLoaded("chisel")) {
+            if(Loader.instance().getIndexedModList().get("chisel").getVersion().startsWith("2.3"))
+                ChiselIceHelper.init();
+        }
     }
 }
