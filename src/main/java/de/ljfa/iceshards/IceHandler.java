@@ -9,8 +9,8 @@ import de.ljfa.iceshards.items.ModItems;
 
 public class IceHandler extends ModGlassHandler {
     
-    public static final IceHandler instance = new IceHandler(true);
-    public static final IceHandler clearingInstance = new IceHandler(false);
+    public static final IceHandler instance = new IceHandler(false);
+    public static final IceHandler clearingInstance = new IceHandler(true);
     
     protected IceHandler(boolean removeDrops) {
         this.removeDrops = removeDrops;
