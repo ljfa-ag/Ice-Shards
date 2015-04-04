@@ -34,6 +34,8 @@ public class IceShards {
     
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        ModRecipes.init();
+        
         if(event.getSide() == Side.CLIENT && ljfa.glassshards.Config.renderTransparent) {
             MinecraftForgeClient.registerItemRenderer(ModItems.ice_shards, new TransparentItemRenderer());
         }
