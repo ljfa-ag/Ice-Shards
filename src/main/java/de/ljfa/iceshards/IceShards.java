@@ -21,7 +21,7 @@ import de.ljfa.iceshards.compat.ChiselIceHelper;
 import de.ljfa.iceshards.items.ModItems;
 
 @Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION,
-    dependencies = "required-after:glass_shards")
+    dependencies = "required-after:glass_shards", guiFactory = Reference.GUI_FACTORY_CLASS)
 public class IceShards {
     @Mod.Instance(Reference.MODID)
     public static IceShards instance;
