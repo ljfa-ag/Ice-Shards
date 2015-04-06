@@ -1,5 +1,6 @@
 package de.ljfa.iceshards;
 
+import ljfa.glassshards.GlassShards;
 import ljfa.glassshards.glass.GlassRegistry;
 import ljfa.glassshards.render.TransparentItemRenderer;
 import net.minecraft.block.Block;
@@ -62,9 +63,7 @@ public class IceShards {
     }
     
     private void initCompatModules() {
-        if(ljfa.glassshards.Config.chiselEnable && Loader.isModLoaded("chisel")) {
-            if(Loader.instance().getIndexedModList().get("chisel").getVersion().startsWith("2.3"))
-                ChiselIceHelper.init();
-        }
+        if(ljfa.glassshards.Config.chiselEnable && GlassShards.instance.isChiselCorrectVersion)
+            ChiselIceHelper.init();
     }
 }
