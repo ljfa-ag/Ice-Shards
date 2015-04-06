@@ -29,7 +29,7 @@ public class Config {
         conf.getCategory(CAT_GENERAL).setComment("General options");
         
         iceShardsChance = (float)conf.get(CAT_GENERAL, "iceShardsChance", 0.6, "Base chance that a block of ice drops shards", 0.0, 1.0).getDouble();
-        iceShardsFortuneChance = (float)conf.get(CAT_GENERAL, "iceShardsFortuneChance", 0.07, "Chance per fortune level that a block of ice drops shards", 0.0, 1.0).getDouble();
+        iceShardsFortuneChance = (float)conf.get(CAT_GENERAL, "iceShardsFortuneChance", 0.08, "Chance per fortune level that a block of ice drops shards", 0.0, 1.0).getDouble();
         //----------------
         if(conf.hasChanged())
             conf.save();
