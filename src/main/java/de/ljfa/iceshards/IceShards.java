@@ -20,6 +20,7 @@ import cpw.mods.fml.common.registry.GameData;
 import cpw.mods.fml.relauncher.Side;
 import de.ljfa.iceshards.compat.ChiselIceHelper;
 import de.ljfa.iceshards.compat.EnderIOCompat;
+import de.ljfa.iceshards.compat.ThaumcraftCompat;
 import de.ljfa.iceshards.compat.ThermalExpCompat;
 import de.ljfa.iceshards.compat.TinkersCompat;
 import de.ljfa.iceshards.items.ModItems;
@@ -75,5 +76,7 @@ public class IceShards {
             ChiselIceHelper.init();
         if(ljfa.glassshards.Config.tinkersMeltShards && Loader.isModLoaded("TConstruct"))
             TinkersCompat.addSmelteryRecipe();
+        if(ljfa.glassshards.Config.thaumAspects && Loader.isModLoaded("Thaumcraft"))
+            ThaumcraftCompat.addAspects();
     }
 }
