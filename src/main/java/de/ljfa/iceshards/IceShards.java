@@ -19,6 +19,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameData;
 import cpw.mods.fml.relauncher.Side;
 import de.ljfa.iceshards.compat.ChiselIceHelper;
+import de.ljfa.iceshards.compat.EnderIOCompat;
 import de.ljfa.iceshards.compat.ThermalExpCompat;
 import de.ljfa.iceshards.items.ModItems;
 
@@ -44,6 +45,8 @@ public class IceShards {
         
         if(ljfa.glassshards.Config.tePulverizer && Loader.isModLoaded("ThermalExpansion"))
             ThermalExpCompat.addRecipes();
+        if(ljfa.glassshards.Config.eioSagMill && Loader.isModLoaded("EnderIO"))
+            EnderIOCompat.addSAGMillRecipes();
     }
     
     @Mod.EventHandler
