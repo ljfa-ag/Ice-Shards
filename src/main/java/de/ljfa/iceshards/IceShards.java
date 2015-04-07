@@ -19,6 +19,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameData;
 import cpw.mods.fml.relauncher.Side;
 import de.ljfa.iceshards.compat.ChiselIceHelper;
+import de.ljfa.iceshards.compat.ThermalExpCompat;
 import de.ljfa.iceshards.items.ModItems;
 
 @Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION,
@@ -40,6 +41,9 @@ public class IceShards {
         if(event.getSide() == Side.CLIENT && ljfa.glassshards.Config.renderTransparent) {
             MinecraftForgeClient.registerItemRenderer(ModItems.ice_shards, new TransparentItemRenderer());
         }
+        
+        if(ljfa.glassshards.Config.tePulverizer && Loader.isModLoaded("ThermalExpansion"))
+            ThermalExpCompat.addRecipes();
     }
     
     @Mod.EventHandler
