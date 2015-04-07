@@ -21,6 +21,7 @@ import cpw.mods.fml.relauncher.Side;
 import de.ljfa.iceshards.compat.ChiselIceHelper;
 import de.ljfa.iceshards.compat.EnderIOCompat;
 import de.ljfa.iceshards.compat.ThermalExpCompat;
+import de.ljfa.iceshards.compat.TinkersCompat;
 import de.ljfa.iceshards.items.ModItems;
 
 @Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION,
@@ -72,5 +73,7 @@ public class IceShards {
     private void initCompatModules() {
         if(ljfa.glassshards.Config.chiselEnable && GlassShards.instance.isChiselCorrectVersion)
             ChiselIceHelper.init();
+        if(ljfa.glassshards.Config.tinkersMeltShards && Loader.isModLoaded("TConstruct"))
+            TinkersCompat.addSmelteryRecipe();
     }
 }
