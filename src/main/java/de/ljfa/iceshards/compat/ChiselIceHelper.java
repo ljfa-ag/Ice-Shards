@@ -15,9 +15,9 @@ public class ChiselIceHelper {
 
     public static void init() {
         GlassRegistry.addHandler(ChiselBlocks.ice_pillar, IceHandler.instance);
-        GlassRegistry.addHandler(ChiselBlocks.packedice, IceHandler.instance);
+        GlassRegistry.addHandler(ChiselBlocks.packedice, IceHandler.packedInstance);
         if(ljfa.glassshards.Config.chiselFixPaneDrops)
-            GlassRegistry.addHandler(ChiselBlocks.packedice_pillar, IceHandler.clearingInstance);
+            GlassRegistry.addHandler(ChiselBlocks.packedice_pillar, IceHandler.clearingPackedInstance);
         
         FMLLog.log(Reference.MODNAME, Level.INFO, "Successfully loaded Chisel compatibility.");
     }

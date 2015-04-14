@@ -14,6 +14,8 @@ public class Config {
     
     public static float iceShardsChance;
     public static float iceShardsFortuneChance;
+    public static float packedIceShardsChance;
+    public static float packedIceShardsFortuneChance;
     
     public static void loadConfig(File file) {
         if(conf == null)
@@ -30,6 +32,8 @@ public class Config {
         
         iceShardsChance = (float)conf.get(CAT_GENERAL, "iceShardsChance", 0.6, "Base chance that a block of ice drops shards", 0.0, 1.0).getDouble();
         iceShardsFortuneChance = (float)conf.get(CAT_GENERAL, "iceShardsFortuneChance", 0.08, "Chance per fortune level that a block of ice drops shards", 0.0, 1.0).getDouble();
+        packedIceShardsChance = (float)conf.get(CAT_GENERAL, "packedIceShardsChance", 0.7, "Base chance that a block of packed ice drops shards", 0.0, 1.0).getDouble();
+        packedIceShardsFortuneChance = (float)conf.get(CAT_GENERAL, "packedIceShardsFortuneChance", 0.07, "Chance per fortune level that a block of packed ice drops shards", 0.0, 1.0).getDouble();
         //----------------
         if(conf.hasChanged())
             conf.save();

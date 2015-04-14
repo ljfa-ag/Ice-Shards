@@ -63,8 +63,11 @@ public class IceShards {
             if(!(obj instanceof Block))
                 continue;
             Block block = (Block)obj;
-            if(block instanceof BlockIce || block instanceof BlockPackedIce) {
+            if(block instanceof BlockIce) {
                 GlassRegistry.addHandler(block, IceHandler.instance);
+                counter++;
+            } else if(block instanceof BlockPackedIce) {
+                GlassRegistry.addHandler(block, IceHandler.packedInstance);
                 counter++;
             }
         }

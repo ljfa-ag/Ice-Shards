@@ -8,18 +8,22 @@ import de.ljfa.iceshards.items.ModItems;
 
 public class IceHandler extends ModGlassHandler {
     
-    public static final IceHandler instance = new IceHandler(false);
-    public static final IceHandler clearingInstance = new IceHandler(true);
-    
-    protected IceHandler(boolean removeDrops) {
-        this.removeDrops = removeDrops;
-    }
+    public static final IceHandler instance = new IceHandler(false, false);
+    public static final IceHandler clearingInstance = new IceHandler(true, false);
+    public static final IceHandler packedInstance = new IceHandler(false, false);
+    public static final IceHandler clearingPackedInstance = new IceHandler(true, false);
     
     private final boolean removeDrops;
+    private final boolean packed;
+    
+    protected IceHandler(boolean removeDrops, boolean packed) {
+        this.removeDrops = removeDrops;
+        this.packed = packed;
+    }
     
     @Override
     public void addShardsDrop(HarvestDropsEvent event) {
-        float chance = getChanceFromFortune(event.fortuneLevel);
+        float chance = getChanceFromFortune(event.fortuneLevel, packed);
         if(event.world.rand.nextFloat() <= chance) {
             event.drops.add(new ItemStack(ModItems.ice_shards));
         }
@@ -30,7 +34,9 @@ public class IceHandler extends ModGlassHandler {
         return removeDrops;
     }
     
-    public static float getChanceFromFortune(int fortune) {
-        return Math.min(Config.iceShardsChance + fortune*Config.iceShardsFortuneChance, 1.0f);
+    public static float getChanceFromFortune(int fortune, boolean packed) {
+        float baseCh = packed ? Config.packedIceShardsChance : Config.iceShardsChance;
+        float fortuneCh = packed ? Config.packedIceShardsFortuneChance : Config.iceShardsFortuneChance;
+        return Math.min(baseCh + fortune*fortuneCh, 1.0f);
     }
 }
