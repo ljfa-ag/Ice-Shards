@@ -1,7 +1,7 @@
 package de.ljfa.iceshards;
 
 import ljfa.glassshards.glass.ModGlassHandler;
-import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import de.ljfa.iceshards.items.ModItems;
@@ -30,7 +30,7 @@ public class IceHandler extends ModGlassHandler {
     }
     
     @Override
-    public boolean shouldRemoveDrop(Block block, int meta) {
+    public boolean shouldRemoveDrop(IBlockState state) {
         return removeDrops;
     }
     

@@ -1,27 +1,18 @@
 package de.ljfa.iceshards;
 
-import ljfa.glassshards.GlassShards;
 import ljfa.glassshards.glass.GlassRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockIce;
 import net.minecraft.block.BlockPackedIce;
-import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.fml.common.FMLLog;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameData;
-import net.minecraftforge.fml.relauncher.Side;
 
 import org.apache.logging.log4j.Level;
 
-import de.ljfa.iceshards.compat.ChiselIceHelper;
-import de.ljfa.iceshards.compat.EnderIOCompat;
-import de.ljfa.iceshards.compat.ThaumcraftCompat;
-import de.ljfa.iceshards.compat.ThermalExpCompat;
-import de.ljfa.iceshards.compat.TinkersCompat;
 import de.ljfa.iceshards.items.ModItems;
 
 @Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION,
@@ -39,10 +30,6 @@ public class IceShards {
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         ModRecipes.init();
-        
-        if(event.getSide() == Side.CLIENT && ljfa.glassshards.Config.renderTransparent) {
-            MinecraftForgeClient.registerItemRenderer(ModItems.ice_shards, new TransparentItemRenderer());
-        }
     }
     
     @Mod.EventHandler
