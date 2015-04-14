@@ -10,8 +10,8 @@ public class IceHandler extends ModGlassHandler {
     
     public static final IceHandler instance = new IceHandler(false, false);
     public static final IceHandler clearingInstance = new IceHandler(true, false);
-    public static final IceHandler packedInstance = new IceHandler(false, false);
-    public static final IceHandler clearingPackedInstance = new IceHandler(true, false);
+    public static final IceHandler packedInstance = new IceHandler(false, true);
+    public static final IceHandler clearingPackedInstance = new IceHandler(true, true);
     
     private final boolean removeDrops;
     private final boolean packed;
