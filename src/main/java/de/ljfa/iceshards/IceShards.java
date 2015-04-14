@@ -43,17 +43,12 @@ public class IceShards {
         if(event.getSide() == Side.CLIENT && ljfa.glassshards.Config.renderTransparent) {
             MinecraftForgeClient.registerItemRenderer(ModItems.ice_shards, new TransparentItemRenderer());
         }
-        
-        if(ljfa.glassshards.Config.tePulverizer && Loader.isModLoaded("ThermalExpansion"))
-            ThermalExpCompat.addRecipes();
-        if(ljfa.glassshards.Config.eioSagMill && Loader.isModLoaded("EnderIO"))
-            EnderIOCompat.addSAGMillRecipes();
     }
     
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         registerAllIce();
-        initCompatModules();
+        //initCompatModules();
     }
     
     private void registerAllIce() {
@@ -73,12 +68,7 @@ public class IceShards {
         FMLLog.log(Reference.MODNAME, Level.INFO, "Added %d ice blocks to the GlassRegistry", counter);
     }
     
-    private void initCompatModules() {
-        if(ljfa.glassshards.Config.chiselEnable && GlassShards.instance.isChiselCorrectVersion)
-            ChiselIceHelper.init();
-        if(ljfa.glassshards.Config.tinkersMeltShards && Loader.isModLoaded("TConstruct"))
-            TinkersCompat.addSmelteryRecipe();
-        if(ljfa.glassshards.Config.thaumAspects && Loader.isModLoaded("Thaumcraft"))
-            ThaumcraftCompat.addAspects();
-    }
+    /*private void initCompatModules() {
+
+    }*/
 }
