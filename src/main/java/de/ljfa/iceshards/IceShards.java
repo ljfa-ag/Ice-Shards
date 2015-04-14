@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameData;
+import net.minecraftforge.fml.relauncher.Side;
 
 import org.apache.logging.log4j.Level;
 
@@ -29,6 +30,8 @@ public class IceShards {
     
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        if(event.getSide() == Side.CLIENT)
+            ModItems.registerModels();
         ModRecipes.init();
     }
     

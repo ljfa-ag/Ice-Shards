@@ -1,9 +1,20 @@
 package de.ljfa.iceshards.items;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemModelMesher;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
 public class ModItems {
     public static ItemIceShards ice_shards;
     
     public static void preInit() {
         ice_shards = new ItemIceShards();
+    }
+    
+    @SideOnly(Side.CLIENT)
+    public static void registerModels() {
+        ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
+        ice_shards.registerModels(mesher);
     }
 }
