@@ -23,7 +23,7 @@ group= "de.ljfa.iceshards" // http://maven.apache.org/guides/mini/guide-naming-c
 archivesBaseName = "ice_shards_mc1.8"
 
 minecraft {
-    version = "1.8-11.14.1.1334"
+    version = "1.8-11.14.1.1411"
     runDir = "run"
     
     replaceIn "Reference.java"
@@ -38,7 +38,7 @@ curse {
 }
 
 dependencies {
-
+    compile files('libs/glass_shards_mc1.8-1.3.2.jar')
 }
 
 processResources
