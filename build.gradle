@@ -23,7 +23,7 @@ group= "de.ljfa.iceshards" // http://maven.apache.org/guides/mini/guide-naming-c
 archivesBaseName = "ice_shards_mc1.7.10"
 
 minecraft {
-    version = "1.7.10-10.13.2.1291"
+    version = "1.7.10-10.13.3.1403-1.7.10"
     runDir = "run"
     
     replaceIn "Reference.java"
@@ -37,8 +37,40 @@ curse {
     relatedProject 'glass-shards'
 }
 
-dependencies {
+repositories {
+    maven {
+        name "RX14"
+        url "http://mvn.rx14.co.uk/repo/"
+    }
+    maven {
+        name "Chisel2"
+        url "http://coloredlightscore.us.to/maven/chisel-2-dev/"
+    }
+    ivy {
+        name "CoFHCore"
+        artifactPattern "http://addons-origin.cursecdn.com/files/2228/225/[module]-[revision](-[classifier]).[ext]"
+    }
+    maven {
+        name 'DVS1 Maven FS'
+        url 'http://dvs1.progwml6.com/files/maven'
+    }
+    maven {
+        name "tterrag Repo"
+        url "http://maven.tterrag.com"
+    }
+    ivy {
+        name "Thaumcraft"
+        artifactPattern "https://dl.dropboxusercontent.com/u/47135879/[module]-([classifier]-)[revision].[ext]"
+    }
+}
 
+dependencies {
+    compile files('libs/glass_shards_mc1.7.10-1.3.2.jar')
+    compile name: 'Chisel2', group: 'com.cricketcraft.chisel', version: chiselVersion, classifier: 'deobf'
+    compile name: 'CoFHCore', group: 'cofh', version: cofhCoreVersion, classifier: 'dev'
+    compile name: 'EnderIO', group: 'com.enderio', version: enderIOVersion, classifier: 'dev'
+    compile name: 'TConstruct', group: 'tconstruct', version: tconstructVersion
+    compile name: 'Thaumcraft', version: thaumcraftVersion, classifier: 'deobf'
 }
 
 processResources
