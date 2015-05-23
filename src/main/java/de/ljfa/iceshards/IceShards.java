@@ -17,7 +17,7 @@ import org.apache.logging.log4j.Level;
 import de.ljfa.iceshards.items.ModItems;
 
 @Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION,
-    dependencies = "required-after:glass_shards", guiFactory = Reference.GUI_FACTORY_CLASS)
+    dependencies = "required-after:glass_shards@[1.3.2,),[${version}]", guiFactory = Reference.GUI_FACTORY_CLASS)
 public class IceShards {
     @Mod.Instance(Reference.MODID)
     public static IceShards instance;
