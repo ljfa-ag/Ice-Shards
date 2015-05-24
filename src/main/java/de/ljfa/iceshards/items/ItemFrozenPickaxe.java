@@ -22,7 +22,7 @@ public class ItemFrozenPickaxe extends ItemTool implements IModeledItem {
     public static final String name = "frozen_pickaxe";
 
     public ItemFrozenPickaxe() {
-        super(0.0f, IceShards.toolMatPackedIce, Collections.EMPTY_SET);
+        super(1.5f, IceShards.toolMatPackedIce, Collections.EMPTY_SET);
         setUnlocalizedName(Reference.MODID + ":" + name);
         GameRegistry.registerItem(this, name);
     }

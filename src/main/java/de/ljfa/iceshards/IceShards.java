@@ -31,7 +31,7 @@ public class IceShards {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         Config.loadConfig(event.getSuggestedConfigurationFile());
-        toolMatPackedIce = EnumHelper.addToolMaterial("PACKED_ICE", 1, 131, 2.0f, 0.5f, 10).setRepairItem(new ItemStack(Blocks.packed_ice));
+        toolMatPackedIce = EnumHelper.addToolMaterial("PACKED_ICE", 1, 131, 3.0f, 0.5f, 10).setRepairItem(new ItemStack(Blocks.packed_ice));
         ModItems.preInit();
     }
     
