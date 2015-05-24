@@ -33,7 +33,7 @@ public class ItemFrozenPickaxe extends ItemTool {
     
     @Override
     public boolean onBlockStartBreak(ItemStack stack, int x, int y, int z, EntityPlayer player) {
-        if(player.capabilities.isCreativeMode)
+        if(player.capabilities.isCreativeMode || EnchantmentHelper.getSilkTouchModifier(player))
             return super.onBlockStartBreak(stack, x, y, z, player);
         World world = player.worldObj;
         Block block = world.getBlock(x, y, z);
