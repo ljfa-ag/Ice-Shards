@@ -11,12 +11,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 import de.ljfa.iceshards.Reference;
 
 public class ItemIceShards extends Item {
-    public static String name = "ice_shards";
+    public static final String name = "ice_shards";
     
     @SideOnly(Side.CLIENT)
     private IIcon texture, texture_opaque;
     
-    ItemIceShards() {
+    public ItemIceShards() {
         setCreativeTab(CreativeTabs.tabMaterials);
         setUnlocalizedName(Reference.MODID + ":" + name);
         setTextureName(Reference.MODID + ":" + name);
