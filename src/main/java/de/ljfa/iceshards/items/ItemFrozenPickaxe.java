@@ -33,11 +33,12 @@ public class ItemFrozenPickaxe extends ItemTool {
     
     @Override
     public boolean onBlockStartBreak(ItemStack stack, int x, int y, int z, EntityPlayer player) {
+        if(player.capabilities.isCreativeMode)
+            return super.onBlockStartBreak(stack, x, y, z, player);
         World world = player.worldObj;
         Block block = world.getBlock(x, y, z);
-        int meta = world.getBlockMetadata(x, y, z);
         if(isMaterialIce(block.getMaterial())) {
-            emulateBlockHarvest(stack, world, x, y, z, block, meta, player);
+            emulateBlockHarvest(stack, world, x, y, z, block, world.getBlockMetadata(x, y, z), player);
             return true;
         } else
             return super.onBlockStartBreak(stack, x, y, z, player);
