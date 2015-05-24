@@ -6,7 +6,11 @@ import ljfa.glassshards.render.TransparentItemRenderer;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockIce;
 import net.minecraft.block.BlockPackedIce;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.MinecraftForgeClient;
+import net.minecraftforge.common.util.EnumHelper;
 
 import org.apache.logging.log4j.Level;
 
@@ -31,9 +35,12 @@ public class IceShards {
     @Mod.Instance(Reference.MODID)
     public static IceShards instance;
     
+    public static ToolMaterial toolMatPackedIce;
+    
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         Config.loadConfig(event.getSuggestedConfigurationFile());
+        toolMatPackedIce = EnumHelper.addToolMaterial("PACKED_ICE", 1, 131, 2.0f, 0.5f, 10).setRepairItem(new ItemStack(Blocks.packed_ice));
         ModItems.preInit();
     }
     
