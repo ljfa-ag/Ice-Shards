@@ -22,5 +22,8 @@ public class ModRecipes {
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.ice, 4), "SS", "SS", 'S', "shardsIce"));
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.packed_ice, 4),
                 " S ", "S#S", " S ",'S', "shardsIce", '#', Blocks.snow));
+        if(ModItems.frozen_pickaxe != null)
+            GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.frozen_pickaxe, "PPP", " | ", " | ",
+                    'P', Blocks.packed_ice, '|', "stickWood"));
     }
 }
