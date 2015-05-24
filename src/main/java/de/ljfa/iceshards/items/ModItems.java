@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import de.ljfa.iceshards.Config;
 
 public class ModItems {
     public static ItemIceShards ice_shards;
@@ -11,7 +12,8 @@ public class ModItems {
     
     public static void preInit() {
         ice_shards = new ItemIceShards();
-        frozen_pickaxe = new ItemFrozenPickaxe();
+        if(Config.enableFrozenPick)
+            frozen_pickaxe = new ItemFrozenPickaxe();
     }
     
     @SideOnly(Side.CLIENT)
