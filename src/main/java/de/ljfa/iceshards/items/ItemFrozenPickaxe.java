@@ -37,6 +37,8 @@ public class ItemFrozenPickaxe extends ItemTool implements IModeledItem {
     
     @Override
     public boolean onBlockStartBreak(ItemStack stack, BlockPos pos, EntityPlayer player) {
+        if(player.capabilities.isCreativeMode || EnchantmentHelper.getSilkTouchModifier(player))
+            return super.onBlockStartBreak(stack, pos, player);
         World world = player.worldObj;
         IBlockState state = world.getBlockState(pos);
         if(isMaterialIce(state.getBlock().getMaterial())) {
