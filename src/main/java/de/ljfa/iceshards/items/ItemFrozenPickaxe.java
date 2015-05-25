@@ -15,6 +15,8 @@ import net.minecraft.item.ItemTool;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import de.ljfa.iceshards.IceShards;
 import de.ljfa.iceshards.Reference;
 
@@ -63,6 +65,7 @@ public class ItemFrozenPickaxe extends ItemTool implements IModeledItem {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void registerModels(ItemModelMesher mesher) {
         mesher.register(this, 0, new ModelResourceLocation(Reference.MODID + ":" + name, "inventory"));
     }
