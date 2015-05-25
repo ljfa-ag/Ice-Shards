@@ -18,5 +18,7 @@ public class ModItems {
     public static void registerModels() {
         ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
         ice_shards.registerModels(mesher);
+        if(frozen_pickaxe != null)
+            frozen_pickaxe.registerModels(mesher);
     }
 }
