@@ -17,6 +17,8 @@ import net.minecraftforge.fml.common.registry.GameData;
 import net.minecraftforge.fml.relauncher.Side;
 
 import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.ljfa.iceshards.items.ModItems;
 
@@ -25,6 +27,8 @@ import de.ljfa.iceshards.items.ModItems;
 public class IceShards {
     @Mod.Instance(Reference.MODID)
     public static IceShards instance;
+    
+    public static final Logger logger = LogManager.getLogger(Reference.MODNAME);
     
     public static ToolMaterial toolMatPackedIce;
     
@@ -62,7 +66,7 @@ public class IceShards {
                 counter++;
             }
         }
-        FMLLog.log(Reference.MODNAME, Level.INFO, "Added %d ice blocks to the GlassRegistry", counter);
+        logger.info("Added {} ice blocks to the GlassRegistry", counter);
     }
     
     /*private void initCompatModules() {
