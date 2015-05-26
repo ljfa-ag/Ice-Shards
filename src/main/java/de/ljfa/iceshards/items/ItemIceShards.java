@@ -22,6 +22,6 @@ public class ItemIceShards extends Item implements IModeledItem {
     @Override
     @SideOnly(Side.CLIENT)
     public void registerModels(ItemModelMesher mesher) {
-        mesher.register(this, 0, new ModelResourceLocation(Reference.MODID + ":ice_shards", "inventory"));
+        mesher.register(this, 0, new ModelResourceLocation(Reference.MODID + ":" + name, "inventory"));
     }
 }
