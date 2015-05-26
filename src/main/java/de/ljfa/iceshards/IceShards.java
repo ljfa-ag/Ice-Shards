@@ -12,9 +12,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.util.EnumHelper;
 
-import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -34,6 +34,8 @@ import de.ljfa.iceshards.items.ModItems;
 public class IceShards {
     @Mod.Instance(Reference.MODID)
     public static IceShards instance;
+    
+    public static final Logger logger = LogManager.getLogger(Reference.MODNAME);
     
     public static ToolMaterial toolMatPackedIce;
     
@@ -78,7 +80,7 @@ public class IceShards {
                 counter++;
             }
         }
-        FMLLog.log(Reference.MODNAME, Level.INFO, "Added %d ice blocks to the GlassRegistry", counter);
+        logger.info("Added {} ice blocks to the GlassRegistry", counter);
     }
     
     private void initCompatModules() {

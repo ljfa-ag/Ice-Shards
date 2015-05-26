@@ -5,12 +5,8 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-
-import org.apache.logging.log4j.Level;
-
 import cofh.api.modhelpers.ThermalExpansionHelper;
-import cpw.mods.fml.common.FMLLog;
-import de.ljfa.iceshards.Reference;
+import de.ljfa.iceshards.IceShards;
 import de.ljfa.iceshards.items.ModItems;
 
 public class ThermalExpCompat {
@@ -22,6 +18,6 @@ public class ThermalExpCompat {
         
         ThermalExpansionHelper.addCrucibleRecipe(1400, new ItemStack(ModItems.ice_shards), new FluidStack(FluidRegistry.WATER, 1000));
         
-        FMLLog.log(Reference.MODNAME, Level.INFO, "Successfully added Thermal Expansion recipes");
+        IceShards.logger.info("Successfully added Thermal Expansion recipes");
     }
 }

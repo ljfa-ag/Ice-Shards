@@ -1,16 +1,13 @@
 package de.ljfa.iceshards.compat;
 
-import org.apache.logging.log4j.Level;
-
 import ljfa.glassshards.glass.GlassRegistry;
 
 import com.cricketcraft.chisel.block.BlockCarvableIceStairs;
 import com.cricketcraft.chisel.block.BlockCarvablePackedIceStairs;
 import com.cricketcraft.chisel.init.ChiselBlocks;
 
-import cpw.mods.fml.common.FMLLog;
 import de.ljfa.iceshards.IceHandler;
-import de.ljfa.iceshards.Reference;
+import de.ljfa.iceshards.IceShards;
 
 
 public class ChiselIceHelper {
@@ -27,6 +24,6 @@ public class ChiselIceHelper {
         for(BlockCarvablePackedIceStairs block: ChiselBlocks.packediceStairs)
             GlassRegistry.addHandler(block, IceHandler.packedInstance);
         
-        FMLLog.log(Reference.MODNAME, Level.INFO, "Successfully loaded Chisel compatibility.");
+        IceShards.logger.info("Successfully loaded Chisel compatibility.");
     }
 }
