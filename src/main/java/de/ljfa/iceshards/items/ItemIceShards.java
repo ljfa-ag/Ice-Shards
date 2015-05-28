@@ -30,7 +30,6 @@ public class ItemIceShards extends Item {
         texture_opaque = iconRegister.registerIcon(Reference.MODID + ":ice_shards_opaque");
     }
     
-    @SideOnly(Side.CLIENT)
     @Override
     public IIcon getIconFromDamage(int damage) {
         return Minecraft.isFancyGraphicsEnabled() ? texture : texture_opaque;

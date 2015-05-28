@@ -4,25 +4,17 @@ import java.util.Collections;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
-import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import de.ljfa.iceshards.IceShards;
 import de.ljfa.iceshards.Reference;
 
 public class ItemFrozenPickaxe extends ItemTool {
     public static final String name = "frozen_pickaxe";
-    
-    @SideOnly(Side.CLIENT)
-    private IIcon texture, texture_opaque;
 
     public ItemFrozenPickaxe() {
         super(1.5f, IceShards.toolMatPackedIce, Collections.EMPTY_SET);
@@ -50,19 +42,6 @@ public class ItemFrozenPickaxe extends ItemTool {
             return true;
         } else
             return super.onBlockStartBreak(stack, x, y, z, player);
-    }
-    
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void registerIcons(IIconRegister iconRegister) {
-        texture = iconRegister.registerIcon(Reference.MODID + ":frozen_pickaxe");
-        texture_opaque = iconRegister.registerIcon(Reference.MODID + ":frozen_pickaxe_opaque");
-    }
-    
-    @SideOnly(Side.CLIENT)
-    @Override
-    public IIcon getIconFromDamage(int damage) {
-        return Minecraft.isFancyGraphicsEnabled() ? texture : texture_opaque;
     }
     
     private boolean isMaterialIce(Material mat) {
