@@ -33,7 +33,7 @@ minecraft {
 curse {
     projectId = '229598'
     apiKey = project.curseForgeApiKey
-    releaseType = 'beta'
+    releaseType = 'release'
     relatedProject 'glass-shards'
 }
 
