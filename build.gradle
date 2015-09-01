@@ -23,8 +23,9 @@ group= "de.ljfa.iceshards" // http://maven.apache.org/guides/mini/guide-naming-c
 archivesBaseName = "ice_shards_mc1.8"
 
 minecraft {
-    version = "1.8-11.14.1.1411"
+    version = "1.8-11.14.3.1450"
     runDir = "run"
+    mappings = "snapshot_20150404"
     
     replaceIn "Reference.java"
     replace "\${version}", project.version
