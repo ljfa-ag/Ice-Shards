@@ -1,29 +1,39 @@
 package de.ljfa.iceshards.compat;
 
-import ljfa.glassshards.glass.GlassRegistry;
-
-import com.cricketcraft.chisel.block.BlockCarvableIceStairs;
-import com.cricketcraft.chisel.block.BlockCarvablePackedIceStairs;
-import com.cricketcraft.chisel.init.ChiselBlocks;
-
 import de.ljfa.iceshards.IceHandler;
 import de.ljfa.iceshards.IceShards;
-
+import ljfa.glassshards.compat.ChiselGlassHelper;
+import ljfa.glassshards.glass.GlassRegistry;
+import ljfa.glassshards.util.ReflectionHelper;
+import net.minecraft.block.Block;
 
 public class ChiselIceHelper {
 
     public static void init() {
-        GlassRegistry.addHandler(ChiselBlocks.ice_pillar, IceHandler.instance);
-        GlassRegistry.addHandler(ChiselBlocks.packedice, IceHandler.packedInstance);
-        if(ljfa.glassshards.Config.chiselFixPaneDrops)
-            GlassRegistry.addHandler(ChiselBlocks.packedice_pillar, IceHandler.clearingPackedInstance);
-        
-        for(BlockCarvableIceStairs block: ChiselBlocks.iceStairs)
-            GlassRegistry.addHandler(block, IceHandler.instance);
-        
-        for(BlockCarvablePackedIceStairs block: ChiselBlocks.packediceStairs)
-            GlassRegistry.addHandler(block, IceHandler.packedInstance);
-        
-        IceShards.logger.info("Successfully loaded Chisel compatibility.");
+        Class<?> chiselBlocks = ChiselGlassHelper.getChiselBlocks();
+        try {
+            Block ice_pillar = ReflectionHelper.getStaticField(chiselBlocks, "ice_pillar");
+            Block packedice = ReflectionHelper.getStaticField(chiselBlocks, "packedice");
+            Block packedice_pillar = ReflectionHelper.getStaticField(chiselBlocks, "packedice_pillar");
+            Block[] iceStairs = ReflectionHelper.getStaticField(chiselBlocks, "iceStairs");
+            Block[] packediceStairs = ReflectionHelper.getStaticField(chiselBlocks, "packediceStairs");
+            
+            GlassRegistry.addHandler(ice_pillar, IceHandler.instance);
+            GlassRegistry.addHandler(packedice, IceHandler.packedInstance);
+            if(ljfa.glassshards.Config.chiselFixPaneDrops)
+                GlassRegistry.addHandler(packedice_pillar, IceHandler.clearingPackedInstance);
+            
+            for(Block block: iceStairs)
+                GlassRegistry.addHandler(block, IceHandler.instance);
+            
+            for(Block block: packediceStairs)
+                GlassRegistry.addHandler(block, IceHandler.packedInstance);
+            
+            IceShards.logger.info("Successfully loaded Chisel compatibility.");
+        }
+        catch(Exception e) {
+            throw new RuntimeException("Could not load Chisel compatibility.\n"
+                + "The ChiselBlocks class was " + chiselBlocks.getName(), e);
+        }
     }
 }
