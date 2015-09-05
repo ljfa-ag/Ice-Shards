@@ -24,10 +24,10 @@ public class ChiselIceHelper {
                 GlassRegistry.addHandler(packedice_pillar, IceHandler.clearingPackedInstance);
             
             for(Block block: iceStairs)
-                GlassRegistry.addHandler(block, IceHandler.instance);
+                GlassRegistry.addHandler(block, IceHandler.clearingInstance);
             
             for(Block block: packediceStairs)
-                GlassRegistry.addHandler(block, IceHandler.packedInstance);
+                GlassRegistry.addHandler(block, IceHandler.clearingPackedInstance);
             
             IceShards.logger.info("Successfully loaded Chisel compatibility.");
         }
