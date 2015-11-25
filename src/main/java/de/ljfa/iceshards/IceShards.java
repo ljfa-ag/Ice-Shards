@@ -1,5 +1,9 @@
 package de.ljfa.iceshards;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import de.ljfa.iceshards.items.ModItems;
 import ljfa.glassshards.glass.GlassRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockIce;
@@ -8,19 +12,11 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameData;
-import net.minecraftforge.fml.relauncher.Side;
-
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import de.ljfa.iceshards.items.ModItems;
 
 @Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION,
     dependencies = "required-after:glass_shards@[1.5.2,),[${version}]", guiFactory = Reference.GUI_FACTORY_CLASS,
@@ -42,8 +38,6 @@ public class IceShards {
     
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-        if(event.getSide() == Side.CLIENT)
-            ModItems.registerModels();
         ModRecipes.init();
     }
     

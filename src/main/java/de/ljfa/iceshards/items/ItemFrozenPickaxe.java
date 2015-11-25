@@ -2,11 +2,11 @@ package de.ljfa.iceshards.items;
 
 import java.util.Collections;
 
-import ljfa.glassshards.items.IModeledItem;
+import de.ljfa.iceshards.IceShards;
+import de.ljfa.iceshards.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,19 +14,22 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import de.ljfa.iceshards.IceShards;
-import de.ljfa.iceshards.Reference;
 
-public class ItemFrozenPickaxe extends ItemTool implements IModeledItem {
+public class ItemFrozenPickaxe extends ItemTool {
     public static final String name = "frozen_pickaxe";
 
     public ItemFrozenPickaxe() {
         super(1.5f, IceShards.toolMatPackedIce, Collections.EMPTY_SET);
         setUnlocalizedName(Reference.MODID + ":" + name);
         GameRegistry.registerItem(this, name);
+        
+        if(FMLCommonHandler.instance().getSide().isClient())
+            ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(Reference.MODID + ":" + name, "inventory"));
     }
 
     @Override
@@ -64,9 +67,4 @@ public class ItemFrozenPickaxe extends ItemTool implements IModeledItem {
         }
     }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerModels(ItemModelMesher mesher) {
-        mesher.register(this, 0, new ModelResourceLocation(Reference.MODID + ":" + name, "inventory"));
-    }
 }
