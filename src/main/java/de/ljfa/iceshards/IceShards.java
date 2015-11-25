@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.registry.GameData;
 
 @Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION,
     dependencies = "required-after:glass_shards@[1.5.2,),[${version}]", guiFactory = Reference.GUI_FACTORY_CLASS,
-    acceptedMinecraftVersions = "1.8.8")
+    acceptedMinecraftVersions = "1.8.8", updateJSON = Reference.UPDATE_JSON)
 public class IceShards {
     @Mod.Instance(Reference.MODID)
     public static IceShards instance;
