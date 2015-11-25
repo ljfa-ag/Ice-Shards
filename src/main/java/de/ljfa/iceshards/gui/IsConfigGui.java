@@ -19,6 +19,7 @@ public class IsConfigGui extends GuiConfig {
     /** Compiles a list of config elements
      * Borrowed from EnderIO's implementation
      */
+    @SuppressWarnings("rawtypes")
     private static List<IConfigElement> getConfigElements() {
         List<IConfigElement> list = new ArrayList<IConfigElement>();
         
