@@ -7,5 +7,4 @@
 /.project
 /libs
 /run
-/Ice-Shards-1.8_Client.launch
-/Ice-Shards-1.8_Server.launch
+/*.launch
