@@ -12,19 +12,19 @@ buildscript {
 }
 
 plugins {
-    id 'com.matthewprenger.cursegradle' version '1.0.4'
+    id 'com.matthewprenger.cursegradle' version '1.0.7'
 }
 
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "1.3.1-fix"
+version = "1.4"
 group= "de.ljfa.iceshards"
-archivesBaseName = "ice_shards_mc1.8.8"
+archivesBaseName = "ice_shards_mc1.8.9"
 
 minecraft {
-    version = "1.8.8-11.14.4.1589-1.8.8"
+    version = "1.8.9-11.15.0.1696"
     runDir = "run"
-    mappings = "snapshot_20151122"
+    mappings = "stable_20"
     
     replaceIn "Reference.java"
     replace "\${version}", project.version
@@ -37,16 +37,16 @@ curseforge {
     project {
         id = '229598'
         changelog  = ''
-        releaseType = 'release'
+        releaseType = 'beta'
         relations {
             requiredLibrary 'glass-shards'
         }
-        addGameVersion '1.8.8'
+        addGameVersion '1.8.9'
     }
 }
 
 dependencies {
-    compile files('libs/glass_shards_mc1.8.8-1.5.2.jar')
+    compile files('libs/glass_shards_mc1.8.9-1.6.jar')
 }
 
 processResources {
