@@ -51,10 +51,7 @@ public class IceShards {
     
     private void registerAllIce() {
         int counter = 0;
-        for(Object obj: GameData.getBlockRegistry()) {
-            if(!(obj instanceof Block))
-                continue;
-            Block block = (Block)obj;
+        for(Block block: GameData.getBlockRegistry()) {
             if(block instanceof BlockIce) {
                 GlassRegistry.addHandler(block, IceHandler.instance);
                 counter++;
