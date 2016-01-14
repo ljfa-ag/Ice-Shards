@@ -47,6 +47,7 @@ curseforge {
 
 dependencies {
     compile files('libs/glass_shards_mc1.8.9-1.6.jar')
+    provided files('libs/Thaumcraft-1.8.9-5.1.2-deobf.jar')
 }
 
 processResources {

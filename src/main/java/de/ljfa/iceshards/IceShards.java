@@ -3,6 +3,7 @@ package de.ljfa.iceshards;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import de.ljfa.iceshards.compat.ThaumcraftCompat;
 import de.ljfa.iceshards.items.ModItems;
 import ljfa.glassshards.glass.GlassRegistry;
 import net.minecraft.block.Block;
@@ -12,6 +13,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -44,7 +46,7 @@ public class IceShards {
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         registerAllIce();
-        //initCompatModules();
+        initCompatModules();
     }
     
     private void registerAllIce() {
@@ -64,7 +66,8 @@ public class IceShards {
         logger.info("Added {} ice blocks to the GlassRegistry", counter);
     }
     
-    /*private void initCompatModules() {
-
-    }*/
+    private void initCompatModules() {
+        if(ljfa.glassshards.Config.thaumAspects && Loader.isModLoaded("Thaumcraft"))
+            ThaumcraftCompat.addAspects();
+    }
 }
