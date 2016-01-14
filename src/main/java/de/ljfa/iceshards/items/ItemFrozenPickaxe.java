@@ -17,8 +17,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemFrozenPickaxe extends ItemTool {
     public static final String name = "frozen_pickaxe";
@@ -42,7 +40,7 @@ public class ItemFrozenPickaxe extends ItemTool {
     
     @Override
     public boolean onBlockStartBreak(ItemStack stack, BlockPos pos, EntityPlayer player) {
-        if(player.capabilities.isCreativeMode || EnchantmentHelper.getSilkTouchModifier(player))
+        if(player.capabilities.isCreativeMode)
             return super.onBlockStartBreak(stack, pos, player);
         World world = player.worldObj;
         IBlockState state = world.getBlockState(pos);
@@ -63,7 +61,10 @@ public class ItemFrozenPickaxe extends ItemTool {
         if(stack.stackSize == 0)
             player.destroyCurrentEquippedItem();
         if(state.getBlock().removedByPlayer(world, pos, player, false)) {
-            state.getBlock().dropBlockAsItem(world, pos, state, EnchantmentHelper.getFortuneModifier(player));
+            int fortune = EnchantmentHelper.getFortuneModifier(player);
+            if(fortune == 0)
+                fortune = EnchantmentHelper.getSilkTouchModifier(player) ? 2 : 0;
+            state.getBlock().dropBlockAsItem(world, pos, state, fortune);
         }
     }
 
