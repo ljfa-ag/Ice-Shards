@@ -24,7 +24,7 @@ public class ItemFrozenPickaxe extends ItemTool {
     public static final String name = "frozen_pickaxe";
 
     public ItemFrozenPickaxe() {
-        super(1.5f, -2.8f, IceShards.toolMatPackedIce, Collections.EMPTY_SET);
+        super(1.5f, -2.8f, IceShards.toolMatPackedIce, Collections.<Block>emptySet());
         setUnlocalizedName(Reference.MODID + ":" + name);
         setRegistryName(name);
         GameRegistry.register(this);
