@@ -17,14 +17,14 @@ plugins {
 
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "1.4"
+version = "1.4.1"
 group= "de.ljfa.iceshards"
-archivesBaseName = "ice_shards_mc1.8.9"
+archivesBaseName = "ice_shards_mc1.9"
 
 minecraft {
-    version = "1.8.9-11.15.0.1696"
+    version = "1.9-12.16.0.1867-1.9"
     runDir = "run"
-    mappings = "stable_20"
+    mappings = "snapshot_20160312"
     
     replaceIn "Reference.java"
     replace "\${version}", project.version
@@ -37,17 +37,16 @@ curseforge {
     project {
         id = '229598'
         changelog  = ''
-        releaseType = 'beta'
+        releaseType = 'alpha'
         relations {
             requiredLibrary 'glass-shards'
         }
-        addGameVersion '1.8.9'
+        addGameVersion '1.9'
     }
 }
 
 dependencies {
-    compile files('libs/glass_shards_mc1.8.9-1.6.jar')
-    provided files('libs/Thaumcraft-1.8.9-5.1.2-deobf.jar')
+    compile files('libs/glass_shards_mc1.9-1.6.1.jar')
 }
 
 processResources {
