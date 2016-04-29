@@ -3,7 +3,6 @@ package de.ljfa.iceshards;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import de.ljfa.iceshards.compat.ThaumcraftCompat;
 import de.ljfa.iceshards.items.ModItems;
 import ljfa.glassshards.glass.GlassRegistry;
 import net.minecraft.block.Block;
@@ -13,16 +12,14 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.registry.GameData;
 
 @Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION,
-    dependencies = "required-after:glass_shards@[1.6,),[${version}]", guiFactory = Reference.GUI_FACTORY_CLASS,
-    acceptedMinecraftVersions = "[1.8.9,1.9)", updateJSON = Reference.UPDATE_JSON)
+    dependencies = "required-after:glass_shards@[1.6.1,),[${version}]", guiFactory = Reference.GUI_FACTORY_CLASS,
+    acceptedMinecraftVersions = "[1.9,1.10)", updateJSON = Reference.UPDATE_JSON)
 public class IceShards {
     @Mod.Instance(Reference.MODID)
     public static IceShards instance;
@@ -51,7 +48,7 @@ public class IceShards {
     
     private void registerAllIce() {
         int counter = 0;
-        for(Block block: GameData.getBlockRegistry()) {
+        for(Block block: Block.blockRegistry) {
             if(block instanceof BlockIce) {
                 GlassRegistry.addHandler(block, IceHandler.instance);
                 counter++;
@@ -64,7 +61,5 @@ public class IceShards {
     }
     
     private void initCompatModules() {
-        if(ljfa.glassshards.Config.thaumAspects && Loader.isModLoaded("Thaumcraft"))
-            ThaumcraftCompat.addAspects();
     }
 }

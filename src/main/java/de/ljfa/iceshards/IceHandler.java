@@ -1,10 +1,10 @@
 package de.ljfa.iceshards;
 
+import de.ljfa.iceshards.items.ModItems;
 import ljfa.glassshards.glass.ModGlassHandler;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
-import de.ljfa.iceshards.items.ModItems;
 
 public class IceHandler extends ModGlassHandler {
     
@@ -23,9 +23,9 @@ public class IceHandler extends ModGlassHandler {
     
     @Override
     public void addShardsDrop(HarvestDropsEvent event) {
-        float chance = getChanceFromFortune(event.fortuneLevel, packed);
-        if(event.world.rand.nextFloat() <= chance) {
-            event.drops.add(new ItemStack(ModItems.ice_shards));
+        float chance = getChanceFromFortune(event.getFortuneLevel(), packed);
+        if(event.getWorld().rand.nextFloat() <= chance) {
+            event.getDrops().add(new ItemStack(ModItems.ice_shards));
         }
     }
     

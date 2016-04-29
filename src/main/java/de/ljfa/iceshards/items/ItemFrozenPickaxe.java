@@ -7,12 +7,14 @@ import de.ljfa.iceshards.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Enchantments;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -22,20 +24,21 @@ public class ItemFrozenPickaxe extends ItemTool {
     public static final String name = "frozen_pickaxe";
 
     public ItemFrozenPickaxe() {
-        super(1.5f, IceShards.toolMatPackedIce, Collections.EMPTY_SET);
+        super(1.5f, -2.8f, IceShards.toolMatPackedIce, Collections.EMPTY_SET);
         setUnlocalizedName(Reference.MODID + ":" + name);
-        GameRegistry.registerItem(this, name);
+        setRegistryName(name);
+        GameRegistry.register(this);
         
         if(FMLCommonHandler.instance().getSide().isClient())
             ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(Reference.MODID + ":" + name, "inventory"));
     }
 
     @Override
-    public float getDigSpeed(ItemStack stack, IBlockState state) {
-        if(isMaterialIce(state.getBlock().getMaterial()))
+    public float getStrVsBlock(ItemStack stack, IBlockState state) {
+        if(isMaterialIce(state.getBlock().getMaterial(state)))
             return efficiencyOnProperMaterial;
         else
-            return super.getDigSpeed(stack, state);
+            return super.getStrVsBlock(stack, state);
     }
     
     @Override
@@ -44,7 +47,7 @@ public class ItemFrozenPickaxe extends ItemTool {
             return super.onBlockStartBreak(stack, pos, player);
         World world = player.worldObj;
         IBlockState state = world.getBlockState(pos);
-        if(isMaterialIce(state.getBlock().getMaterial())) {
+        if(isMaterialIce(state.getBlock().getMaterial(state))) {
             emulateBlockHarvest(stack, world, pos, state, player);
             return true;
         } else
@@ -57,13 +60,13 @@ public class ItemFrozenPickaxe extends ItemTool {
     
     private void emulateBlockHarvest(ItemStack stack, World world, BlockPos pos, IBlockState state, EntityPlayer player) {
         world.playAuxSFXAtEntity(player, 2001, pos, Block.getStateId(state));
-        stack.onBlockDestroyed(world, state.getBlock(), pos, player);
+        stack.onBlockDestroyed(world, state, pos, player);
         if(stack.stackSize == 0)
-            player.destroyCurrentEquippedItem();
-        if(state.getBlock().removedByPlayer(world, pos, player, false)) {
-            int fortune = EnchantmentHelper.getFortuneModifier(player);
+            player.setHeldItem(EnumHand.MAIN_HAND, null);
+        if(state.getBlock().removedByPlayer(state, world, pos, player, false)) {
+            int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.fortune, stack);
             if(fortune == 0)
-                fortune = EnchantmentHelper.getSilkTouchModifier(player) ? 2 : 0;
+                fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.silkTouch, stack) > 0 ? 2 : 0;
             state.getBlock().dropBlockAsItem(world, pos, state, fortune);
         }
     }

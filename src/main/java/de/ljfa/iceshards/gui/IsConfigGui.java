@@ -3,13 +3,12 @@ package de.ljfa.iceshards.gui;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.ljfa.iceshards.Config;
+import de.ljfa.iceshards.Reference;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraftforge.common.config.ConfigCategory;
 import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.fml.client.config.GuiConfig;
 import net.minecraftforge.fml.client.config.IConfigElement;
-import de.ljfa.iceshards.Config;
-import de.ljfa.iceshards.Reference;
 
 public class IsConfigGui extends GuiConfig {
     public IsConfigGui(GuiScreen parent) {
