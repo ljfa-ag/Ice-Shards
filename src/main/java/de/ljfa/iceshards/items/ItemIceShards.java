@@ -12,7 +12,7 @@ public class ItemIceShards extends Item {
     public static final String name = "ice_shards";
     
     public ItemIceShards() {
-        setCreativeTab(CreativeTabs.tabMaterials);
+        setCreativeTab(CreativeTabs.MATERIALS);
         setUnlocalizedName(Reference.MODID + ":" + name);
         setRegistryName(name);
         GameRegistry.register(this);

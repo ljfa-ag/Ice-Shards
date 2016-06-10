@@ -19,11 +19,11 @@ public class ModRecipes {
     }
     
     private static void addCrafting() {
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.ice, 4), "SS", "SS", 'S', "shardsIce"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.packed_ice, 4),
-                " S ", "S#S", " S ",'S', "shardsIce", '#', Blocks.snow));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.ICE, 4), "SS", "SS", 'S', "shardsIce"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.PACKED_ICE, 4),
+                " S ", "S#S", " S ",'S', "shardsIce", '#', Blocks.SNOW));
         if(ModItems.frozen_pickaxe != null)
             GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.frozen_pickaxe, "PPP", " | ", " | ",
-                    'P', Blocks.packed_ice, '|', "stickWood"));
+                    'P', Blocks.PACKED_ICE, '|', "stickWood"));
     }
 }

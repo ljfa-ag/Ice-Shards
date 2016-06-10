@@ -18,8 +18,8 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION,
-    dependencies = "required-after:glass_shards@[1.6.1,),[${version}]", guiFactory = Reference.GUI_FACTORY_CLASS,
-    acceptedMinecraftVersions = "[1.9,1.10)", updateJSON = Reference.UPDATE_JSON)
+    dependencies = "required-after:glass_shards@[1.6.2,),[${version}]", guiFactory = Reference.GUI_FACTORY_CLASS,
+    acceptedMinecraftVersions = "[1.9.4,1.10)", updateJSON = Reference.UPDATE_JSON)
 public class IceShards {
     @Mod.Instance(Reference.MODID)
     public static IceShards instance;
@@ -31,7 +31,7 @@ public class IceShards {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         Config.loadConfig(event.getSuggestedConfigurationFile());
-        toolMatPackedIce = EnumHelper.addToolMaterial("PACKED_ICE", 1, Config.pickDurability, 3.0f, 0.5f, 14).setRepairItem(new ItemStack(Blocks.packed_ice));
+        toolMatPackedIce = EnumHelper.addToolMaterial("PACKED_ICE", 1, Config.pickDurability, 3.0f, 0.5f, 14).setRepairItem(new ItemStack(Blocks.PACKED_ICE));
         ModItems.preInit();
     }
     
@@ -48,7 +48,7 @@ public class IceShards {
     
     private void registerAllIce() {
         int counter = 0;
-        for(Block block: Block.blockRegistry) {
+        for(Block block: Block.REGISTRY) {
             if(block instanceof BlockIce) {
                 GlassRegistry.addHandler(block, IceHandler.instance);
                 counter++;

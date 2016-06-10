@@ -35,7 +35,7 @@ public class ItemFrozenPickaxe extends ItemTool {
 
     @Override
     public float getStrVsBlock(ItemStack stack, IBlockState state) {
-        if(isMaterialIce(state.getBlock().getMaterial(state)))
+        if(isMaterialIce(state.getMaterial()))
             return efficiencyOnProperMaterial;
         else
             return super.getStrVsBlock(stack, state);
@@ -47,7 +47,7 @@ public class ItemFrozenPickaxe extends ItemTool {
             return super.onBlockStartBreak(stack, pos, player);
         World world = player.worldObj;
         IBlockState state = world.getBlockState(pos);
-        if(isMaterialIce(state.getBlock().getMaterial(state))) {
+        if(isMaterialIce(state.getMaterial())) {
             emulateBlockHarvest(stack, world, pos, state, player);
             return true;
         } else
@@ -55,18 +55,18 @@ public class ItemFrozenPickaxe extends ItemTool {
     }
     
     private boolean isMaterialIce(Material mat) {
-        return mat == Material.ice || mat == Material.packedIce;
+        return mat == Material.ICE || mat == Material.PACKED_ICE;
     }
     
     private void emulateBlockHarvest(ItemStack stack, World world, BlockPos pos, IBlockState state, EntityPlayer player) {
-        world.playAuxSFXAtEntity(player, 2001, pos, Block.getStateId(state));
+        world.playEvent(player, 2001, pos, Block.getStateId(state));
         stack.onBlockDestroyed(world, state, pos, player);
         if(stack.stackSize == 0)
             player.setHeldItem(EnumHand.MAIN_HAND, null);
         if(state.getBlock().removedByPlayer(state, world, pos, player, false)) {
-            int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.fortune, stack);
+            int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, stack);
             if(fortune == 0)
-                fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.silkTouch, stack) > 0 ? 2 : 0;
+                fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, stack) > 0 ? 2 : 0;
             state.getBlock().dropBlockAsItem(world, pos, state, fortune);
         }
     }
