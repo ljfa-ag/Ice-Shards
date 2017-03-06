@@ -13,7 +13,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
@@ -45,7 +44,7 @@ public class ItemFrozenPickaxe extends ItemTool {
     public boolean onBlockStartBreak(ItemStack stack, BlockPos pos, EntityPlayer player) {
         if(player.capabilities.isCreativeMode)
             return super.onBlockStartBreak(stack, pos, player);
-        World world = player.worldObj;
+        World world = player.world;
         IBlockState state = world.getBlockState(pos);
         if(isMaterialIce(state.getMaterial())) {
             emulateBlockHarvest(stack, world, pos, state, player);
@@ -61,8 +60,6 @@ public class ItemFrozenPickaxe extends ItemTool {
     private void emulateBlockHarvest(ItemStack stack, World world, BlockPos pos, IBlockState state, EntityPlayer player) {
         world.playEvent(player, 2001, pos, Block.getStateId(state));
         stack.onBlockDestroyed(world, state, pos, player);
-        if(stack.stackSize == 0)
-            player.setHeldItem(EnumHand.MAIN_HAND, null);
         if(state.getBlock().removedByPlayer(state, world, pos, player, false)) {
             int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, stack);
             if(fortune == 0)
