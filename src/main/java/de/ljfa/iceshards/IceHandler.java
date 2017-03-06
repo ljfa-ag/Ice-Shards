@@ -24,7 +24,7 @@ public class IceHandler extends ModGlassHandler {
     @Override
     public void addShardsDrop(HarvestDropsEvent event) {
         float chance = getChanceFromFortune(event.getFortuneLevel(), packed);
-        if(event.getWorld().rand.nextFloat() <= chance) {
+        if(event.getWorld().rand.nextFloat() < chance) {
             event.getDrops().add(new ItemStack(ModItems.ice_shards));
         }
     }
