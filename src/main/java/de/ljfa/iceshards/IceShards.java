@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION,
     dependencies = "required-after:glass_shards@[1.6.2,),[${version}]", guiFactory = Reference.GUI_FACTORY_CLASS,
-    acceptedMinecraftVersions = "[1.9.4,1.10)", updateJSON = Reference.UPDATE_JSON)
+    acceptedMinecraftVersions = "[1.11.2,)", updateJSON = Reference.UPDATE_JSON)
 public class IceShards {
     @Mod.Instance(Reference.MODID)
     public static IceShards instance;
