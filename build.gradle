@@ -17,7 +17,7 @@ plugins {
 
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "1.4.2"
+version = "1.4.3"
 group= "de.ljfa.iceshards"
 archivesBaseName = "ice_shards_mc1.11.2"
 
@@ -45,7 +45,7 @@ curseforge {
 }
 
 dependencies {
-    compile files('libs/glass_shards_mc1.11.2-1.6.2.jar')
+    compile files('libs/glass_shards_mc1.11.2-1.6.3.jar')
 }
 
 processResources {
