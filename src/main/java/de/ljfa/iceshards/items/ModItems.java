@@ -1,14 +1,10 @@
 package de.ljfa.iceshards.items;
 
-import de.ljfa.iceshards.Config;
+import de.ljfa.iceshards.Reference;
+import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
+@ObjectHolder(Reference.MODID)
 public class ModItems {
-    public static ItemIceShards ice_shards;
-    public static ItemFrozenPickaxe frozen_pickaxe;
-    
-    public static void preInit() {
-        ice_shards = new ItemIceShards();
-        if(Config.enableFrozenPick)
-            frozen_pickaxe = new ItemFrozenPickaxe();
-    }
+    public static final ItemIceShards ice_shards = null;
+    public static final ItemFrozenPickaxe frozen_pickaxe = null;
 }

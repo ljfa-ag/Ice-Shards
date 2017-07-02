@@ -7,7 +7,6 @@ import de.ljfa.iceshards.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
@@ -15,21 +14,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemFrozenPickaxe extends ItemTool {
-    public static final String name = "frozen_pickaxe";
-
+    
     public ItemFrozenPickaxe() {
-        super(1.5f, -2.8f, IceShards.toolMatPackedIce, Collections.<Block>emptySet());
-        setUnlocalizedName(Reference.MODID + ":" + name);
-        setRegistryName(name);
-        GameRegistry.register(this);
-        
-        if(FMLCommonHandler.instance().getSide().isClient())
-            ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(Reference.MODID + ":" + name, "inventory"));
+        super(1.5f, -2.8f, IceShards.instance.toolMatPackedIce, Collections.emptySet());
+        setRegistryName("frozen_pickaxe");
+        setUnlocalizedName(Reference.MODID + ":frozen_pickaxe");
     }
 
     @Override
