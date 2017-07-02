@@ -45,8 +45,15 @@ curseforge {
     }
 }
 
+repositories {
+    maven {
+        name = "CurseForge"
+        url = "https://minecraft.curseforge.com/api/maven/"
+    }
+}
+
 dependencies {
-    compile files('libs/glass_shards_mc1.12-1.7.jar')
+    compile 'glass-shards:glass_shards_mc1.12:1.7'
 }
 
 processResources {
