@@ -7,29 +7,30 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
     }
 }
 
 plugins {
-    id 'com.matthewprenger.cursegradle' version '1.0.7'
+    id 'com.matthewprenger.cursegradle' version '1.0.9'
 }
 
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 version = "1.4.3"
 group= "de.ljfa.iceshards"
-archivesBaseName = "ice_shards_mc1.11.2"
+archivesBaseName = "ice_shards_mc1.12"
 
 minecraft {
-    version = "1.11.2-13.20.0.2228"
+    version = "1.12-14.21.1.2387"
     runDir = "run"
 
-    mappings = "snapshot_20161220"
+    mappings = "snapshot_20170624"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
     
     replaceIn "Reference.java"
     replace "\${version}", project.version
+    
 }
 
 curseforge {
@@ -45,7 +46,7 @@ curseforge {
 }
 
 dependencies {
-    compile files('libs/glass_shards_mc1.11.2-1.6.3.jar')
+    compile files('libs/glass_shards_mc1.12-1.7.jar')
 }
 
 processResources {
