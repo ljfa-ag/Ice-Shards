@@ -35,8 +35,8 @@ public class IceHandler extends ModGlassHandler {
     }
     
     public static float getChanceFromFortune(int fortune, boolean packed) {
-        float baseCh = packed ? Config.packedIceShardsChance : Config.iceShardsChance;
-        float fortuneCh = packed ? Config.packedIceShardsFortuneChance : Config.iceShardsFortuneChance;
-        return Math.min(baseCh + fortune*fortuneCh, 1.0f);
+        double baseCh = packed ? Config.packedIceShardsChance : Config.iceShardsChance;
+        double fortuneCh = packed ? Config.packedIceShardsFortuneChance : Config.iceShardsFortuneChance;
+        return (float)Math.min(baseCh + fortune*fortuneCh, 1.0);
     }
 }

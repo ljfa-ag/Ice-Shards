@@ -14,13 +14,16 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Config.Type;
+import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent.OnConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -43,7 +46,7 @@ public class IceShards {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(this);
-        toolMatPackedIce = EnumHelper.addToolMaterial("PACKED_ICE", 1, Config.pickDurability, 3.0f, 0.5f, 14).setRepairItem(new ItemStack(Blocks.PACKED_ICE));
+        toolMatPackedIce = EnumHelper.addToolMaterial("PACKED_ICE", 1, Config.frozenPickaxeDurability, 3.0f, 0.5f, 14).setRepairItem(new ItemStack(Blocks.PACKED_ICE));
     }
     
     @Mod.EventHandler
@@ -72,7 +75,7 @@ public class IceShards {
     @SubscribeEvent
     public void registerItems(RegistryEvent.Register<Item> event) {
         event.getRegistry().register(new ItemIceShards());
-        if(Config.enableFrozenPick)
+        if(Config.enableFrozenPickaxe)
             event.getRegistry().register(new ItemFrozenPickaxe());
     }
     
@@ -87,5 +90,11 @@ public class IceShards {
     @SubscribeEvent
     public void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         ModRecipes.init();
+    }
+    
+    @SubscribeEvent
+    public void onConfigChanged(OnConfigChangedEvent event) {
+        if(Reference.MODID.equals(event.getModID()))
+            ConfigManager.sync(Reference.MODID, Type.INSTANCE);
     }
 }
