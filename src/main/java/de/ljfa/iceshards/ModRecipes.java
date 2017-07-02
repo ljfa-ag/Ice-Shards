@@ -3,9 +3,9 @@ package de.ljfa.iceshards;
 import de.ljfa.iceshards.items.ModItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class ModRecipes {
 
@@ -19,11 +19,15 @@ public class ModRecipes {
     }
     
     private static void addCrafting() {
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.ICE, 4), "SS", "SS", 'S', "shardsIce"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.PACKED_ICE, 4),
-                " S ", "S#S", " S ",'S', "shardsIce", '#', Blocks.SNOW));
+        GameRegistry.addShapedRecipe(new ResourceLocation(Reference.MODID, "ice"), null, new ItemStack(Blocks.ICE, 4),
+                "SS", "SS",
+                'S', "shardsIce");
+        GameRegistry.addShapedRecipe(new ResourceLocation(Reference.MODID, "packed_ice"), null, new ItemStack(Blocks.PACKED_ICE, 4),
+                " S ", "S#S", " S ",
+                'S', "shardsIce", '#', Blocks.SNOW);
         if(ModItems.frozen_pickaxe != null)
-            GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.frozen_pickaxe, "PPP", " | ", " | ",
-                    'P', Blocks.PACKED_ICE, '|', "stickWood"));
+            GameRegistry.addShapedRecipe(new ResourceLocation(Reference.MODID, "frozen_pickaxe"), null, new ItemStack(ModItems.frozen_pickaxe),
+                    "PPP", " | ", " | ",
+                    'P', Blocks.PACKED_ICE, '|', "stickWood");
     }
 }
