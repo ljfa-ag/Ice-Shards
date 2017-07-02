@@ -12,8 +12,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.event.ForgeEventFactory;
 
 public class ItemFrozenPickaxe extends ItemTool {
     
@@ -51,6 +53,8 @@ public class ItemFrozenPickaxe extends ItemTool {
     private void emulateBlockHarvest(ItemStack stack, World world, BlockPos pos, IBlockState state, EntityPlayer player) {
         world.playEvent(player, 2001, pos, Block.getStateId(state));
         stack.onBlockDestroyed(world, state, pos, player);
+        if(stack.isEmpty())
+            ForgeEventFactory.onPlayerDestroyItem(player, stack, EnumHand.MAIN_HAND);
         if(state.getBlock().removedByPlayer(state, world, pos, player, false)) {
             int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, stack);
             if(fortune == 0)
