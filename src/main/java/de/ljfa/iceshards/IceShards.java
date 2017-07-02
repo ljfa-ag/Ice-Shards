@@ -14,6 +14,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
@@ -29,8 +30,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION,
-    dependencies = "required-after:glass_shards@[1.6.3,),[${version}]",
-    acceptedMinecraftVersions = "[1.11.2,)", updateJSON = Reference.UPDATE_JSON)
+    dependencies = "required-after:glass_shards@[1.7,),[${version}]",
+    acceptedMinecraftVersions = "[1.12,)", updateJSON = Reference.UPDATE_JSON)
 public class IceShards {
     @Mod.Instance(Reference.MODID)
     public static IceShards instance;
@@ -81,5 +82,10 @@ public class IceShards {
         ModelLoader.setCustomModelResourceLocation(ModItems.ice_shards, 0, new ModelResourceLocation(Reference.MODID + ":ice_shards", "inventory"));
         if(ModItems.frozen_pickaxe != null)
             ModelLoader.setCustomModelResourceLocation(ModItems.frozen_pickaxe, 0, new ModelResourceLocation(Reference.MODID + ":frozen_pickaxe", "inventory"));
+    }
+    
+    @SubscribeEvent
+    public void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+        ModRecipes.init();
     }
 }
