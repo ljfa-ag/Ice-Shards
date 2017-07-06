@@ -5,7 +5,7 @@
   "description": "An addon for Glass Shards that adds ice shards",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "http://minecraft.curseforge.com/mc-mods/229598-ice-shards",
+  "url": "https://minecraft.curseforge.com/projects/ice-shards",
   "updateUrl": "",
   "authorList": ["ljfa"],
   "credits": "ljfa for the code, Tord for textures and ideas",
